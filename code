@@ -8,3 +8,6 @@ driver.get('https://elibrary.ru/cit_items.asp?gritemid=27316955')
 
 #пытаюсь вытащить ссылки на *цитирующих* работы 
 ref = driver.find_elements(By.XPATH,'/a[@title="Список статей, ссылающихся на данную"]') 
+
+for i in full_name: 
+    print(i.text)
