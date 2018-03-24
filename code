@@ -1,0 +1,10 @@
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver import Firefox
+driver = Firefox(executable_path='/home/sergey/Downloads/geckodriver')
+
+#страница на профиль в elibrary
+driver.get('https://elibrary.ru/cit_items.asp?gritemid=27316955')
+
+#пытаюсь вытащить ссылки на *цитирующих* работы 
+ref = driver.find_elements(By.XPATH,'/a[@title="Список статей, ссылающихся на данную"]') 
