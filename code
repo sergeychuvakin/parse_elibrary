@@ -3,11 +3,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver import Firefox
 driver = Firefox(executable_path='/home/sergey/Downloads/geckodriver')
 
-#страница на профиль в elibrary
-driver.get('https://elibrary.ru/cit_items.asp?gritemid=27316955')
 
-#пытаюсь вытащить ссылки на *цитирующих* работы 
-ref = driver.find_elements(By.XPATH,'/a[@title="Список статей, ссылающихся на данную"]') 
+# ссылка на конкретного цитирующего 
+driver.get('https://elibrary.ru/author_items.asp?authorid=804138')
 
-for i in full_name: 
-    print(i.text)
+#инфа, где хочу вытащить имя, универ, факультет, город 
+nom_univ_fac = driver.find_elements(By.XPATH,'//div')[1]
+
+# здесь хочу найти элемент b в nom_univ_fac - это имя фамилия  
+item = {}
+for i in nom_univ_fac: 
+    item['nom'] = driver.find_elements(By.XPATH,'//b')
